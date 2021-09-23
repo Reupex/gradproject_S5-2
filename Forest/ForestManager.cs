@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -20,8 +20,9 @@ public class ForestManager : MonoBehaviour
     int DeadTree = 0;
     int count = 0;
     int[] PoseTree = new int[8];
-    public GameObject tree;
+    GameObject tree;
     public GameObject tree2;
+    public GameObject tree3;
     public GameObject ecText;
 
     bool isRevise = false;
@@ -30,10 +31,9 @@ public class ForestManager : MonoBehaviour
     List<string> child = new List<string>();
     public List<int> countTree = new List<int>();
     public List<GameObject> treeList = new List<GameObject>();
-
-    // Start is called before the first frame update
     void Start()
     {
+        treeList.Clear();
         CountTree();
         GroundPieces = GameObject.Find("GroundPieces").transform;
         // CSV -> 나무
@@ -59,6 +59,7 @@ public class ForestManager : MonoBehaviour
         fText.text = FreshTree.ToString();
         dText.text = DeadTree.ToString();
 
+        // Device 보정
         //if (Serial.instance.isRevise)
         //{
         //    for (int i = 0; i < 4; i++)
@@ -161,20 +162,24 @@ public class ForestManager : MonoBehaviour
 
     public void CountTree() // DB에서 forest 데이터 가져오기
     {
+        FreshTree = 0;
+        DeadTree = 0;
         DBManager.DataBaseRead(string.Format("SELECT * FROM Forest WHERE userID = '{0}'", Data.Instance.UserID));
         while (DBManager.dataReader.Read())
         {
             for (int i = 1; i < 16; i++)
             {
                 if(i < 9)
-                    tree.transform.GetChild(i - 1).gameObject.transform.GetComponent<Text>().text = DBManager.dataReader.GetInt32(i).ToString();
+                    tree3.transform.GetChild(i - 1).gameObject.transform.GetComponent<Text>().text = DBManager.dataReader.GetInt32(i).ToString();
                 else
                     tree2.transform.GetChild(i - 9).gameObject.transform.GetComponent<Text>().text = DBManager.dataReader.GetInt32(i).ToString();
                 if (i == 4 || i == 8 || i == 11 || i == 15) // 중단 나무 개수를 나타내는 인덱스이기 때문에
                     DeadTree += DBManager.dataReader.GetInt32(i);
                 else
                     FreshTree += DBManager.dataReader.GetInt32(i);
-                countTree.Add(DBManager.dataReader.GetInt32(i));
+                
+                if(countTree.Count < 15) { countTree.Add(DBManager.dataReader.GetInt32(i)); print("더해"); }
+                else { countTree[i - 1] = DBManager.dataReader.GetInt32(i); }
             }
         }
         DBManager.DBClose();
@@ -212,6 +217,10 @@ public class ForestManager : MonoBehaviour
                 = Data.Instance.UserName + "님,\n" + "훈련용 콘텐츠를 선택하시겠습니까?";
         }
     }
+    public void Result() // [그래프]
+    {
+        SceneManager.LoadScene("Graph");
+    }
 
     public void Measurement() // [측정하기]
     {
@@ -228,7 +237,11 @@ public class ForestManager : MonoBehaviour
     // CSV 관련 스크립트
     public void SaveTree()
     {
-        CSV_Data.TreeData.Clear(); // 데이터가 누적되지 않게 하기 위해 지워줌
+        CSV_Data.TreeData.Clear();
+
+        for (int i = 0; i < countTree.Count; i++)
+            countTree[i] = 0;
+
         string t = "";
         for (int i = 0; i < GroundPieces.childCount; i++)
         {
@@ -295,7 +308,10 @@ public class ForestManager : MonoBehaviour
                     break;
             }
         }
-        DBManager.DatabaseSQLAdd(string.Format("DELETE FROM Forest WHERE userID = '{0}'", Data.Instance.UserID));
+
+
+        // DB에 나무 정보 저장
+        DBManager.DatabaseSQLAdd(string.Format("DELETE FROM Forest WHERE userID = '{0}'", Data.Instance.UserID)); 
         string query = "INSERT INTO Forest VALUES ('" + Data.Instance.UserID + "',";
         for (int i = 0; i < countTree.Count-1; i++)
         {
@@ -306,7 +322,7 @@ public class ForestManager : MonoBehaviour
         DBManager.DatabaseSQLAdd(query);
     }
 
-    public void UpdateLineFile()
+    public void UpdateLineFile() // CSV 파일 업데이트
     {
         Data.Instance.FreshTree = 0;
         Data.Instance.DeadTree = 0;
@@ -323,7 +339,7 @@ public class ForestManager : MonoBehaviour
         outStream.Close();
     }
 
-    public void ReadLineFile(string file)
+    public void ReadLineFile(string file) // CSV 파일 READ 함수
     {
         if (File.Exists(file))
         {
@@ -335,7 +351,7 @@ public class ForestManager : MonoBehaviour
             }
         }
     }
-    public void SettingOffset()
+    public void SettingOffset() // 보정 값 받아오는 함수
     {
         Serial.instance.Active();
         ecText.transform.GetChild(0).gameObject.GetComponent<Text>().text = Serial.instance.angle.ToString();
@@ -343,7 +359,7 @@ public class ForestManager : MonoBehaviour
         Serial.instance.End();
     }
     
-    public void Revise(Text text)
+    public void Revise(Text text) // 보정
     {
         count++;
         if(count % 2 ==  1)
