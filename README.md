@@ -23,6 +23,7 @@ Development of Devices and Content Based on Stepper Motor Control for Improvemen
 
 
 ## 콘텐츠
+![image](https://user-images.githubusercontent.com/75357444/134477382-44e67e06-a344-405a-84ea-ff659a510d7f.png)
 
 
 ## 기대효과
