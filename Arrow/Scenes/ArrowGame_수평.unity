@@ -4489,6 +4489,7 @@ MonoBehaviour:
   slider: {fileID: 455408862}
   type: "\uC218\uD3C9"
   UPcircle: 0
+  TotalRotate: 0
   checkpoint: 0
   times: 0
   slider_value_backup: 0
@@ -4521,6 +4522,7 @@ MonoBehaviour:
   userID: 
   gameID: 
   sql: 
+  handle: 
   series1Data2: []
   circleGraph: {fileID: 4660677344137628424}
 --- !u!114 &1237528647
@@ -12663,8 +12665,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 0}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4

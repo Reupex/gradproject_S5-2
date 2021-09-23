@@ -796,7 +796,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   time: 0
   pass: 0
-  Main_Monster: {fileID: 1656310960520820454}
+  Main_Monster: {fileID: 1656310960978140852, guid: 210a277a414015e40b3897c6cbb1ad15,
+    type: 3}
   isGame: 0
 --- !u!81 &306648354
 AudioListener:

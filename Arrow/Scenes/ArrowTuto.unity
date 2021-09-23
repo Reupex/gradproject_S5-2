@@ -6954,7 +6954,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7191,7 +7191,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7745,7 +7745,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13358,7 +13358,6 @@ MonoBehaviour:
   Monster_Spawn_Slot_Up: {fileID: 0}
   pause: 0
   check: 0
-  origin: {fileID: 0}
   MaxScore_Text: {fileID: 8609951225458352954}
   test: {fileID: 8609951225458352954}
   test_Result: {fileID: 8609951225458352954}
@@ -13367,7 +13366,9 @@ MonoBehaviour:
   userID: 
   gameID: 
   sql: 
+  handle: 
   series1Data2: []
+  circleGraph: {fileID: 0}
 --- !u!114 &8609951225601985038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13449,7 +13450,16 @@ MonoBehaviour:
   isTuto: 0
   SliderMinValue: 0
   SliderMaxValue: 0
+  Rotation_angle: 0
   slider: {fileID: 8609951226912949909}
+  type: 
+  UPcircle: 0
+  TotalRotate: 0
+  checkpoint: 0
+  times: 0
+  slider_value_backup: 0
+  Change_Point: []
+  Change_Time: 0
 --- !u!224 &8609951225601985039
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18247,8 +18257,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3cfed54395f8fb4ea60536a77417d56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxROM: 0
   slider: {fileID: 0}
+  values: []
 --- !u!4 &8609951226943894941
 Transform:
   m_ObjectHideFlags: 0
