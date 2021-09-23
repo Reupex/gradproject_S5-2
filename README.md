@@ -18,12 +18,11 @@ Development of Devices and Content Based on Stepper Motor Control for Improvemen
 스테퍼 모터를 활용한 디바이스 제작과 이를 통해 사용자의 상지 관절가동범위를 정량적 측정 및 데이터 시각화하는 콘텐츠 제작
 
 ## 디바이스
-![image](https://user-images.githubusercontent.com/75357444/134477194-848bef94-6720-4c92-b800-0f56f5355ba4.png)        
+![image](https://user-images.githubusercontent.com/75357444/134477260-969a1ded-24dc-4384-ae6b-dac1687a271d.png)   
+![image](https://user-images.githubusercontent.com/75357444/134477275-2fe6ca96-e4af-4e58-b739-b7d8d238f3cf.png)
 
 
 ## 콘텐츠
-![image](https://user-images.githubusercontent.com/75357444/134476880-2dcb0fa5-dd54-4b78-b15e-438e7350880a.png)
-![image](https://user-images.githubusercontent.com/75357444/134477206-c9ded929-43ba-45ad-9885-c09c4f3469e9.png)
 
 
 ## 기대효과
