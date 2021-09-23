@@ -5403,7 +5403,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1040514977}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.7}
+  m_LocalPosition: {x: 0, y: 0, z: 9}
   m_LocalScale: {x: 0.6425909, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 382962072}
@@ -5411,7 +5411,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 68.48, y: -2.4}
+  m_AnchoredPosition: {x: 68, y: -22}
   m_SizeDelta: {x: 336.07324, y: 159.31783}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1040514979
@@ -8853,7 +8853,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10206,6 +10206,7 @@ MonoBehaviour:
   - {fileID: 442082229}
   - {fileID: 941092909}
   - {fileID: 568099687}
+  tutoNum: 0
   maxScore: 0
   randNum: 0
   cmpNum: 0
@@ -11238,6 +11239,7 @@ GameObject:
   m_Component:
   - component: {fileID: 591973261829103175}
   - component: {fileID: 591973261829103174}
+  - component: {fileID: 591973261829103173}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -11245,6 +11247,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &591973261829103173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 591973261829103172}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3cfed54395f8fb4ea60536a77417d56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 0}
+  values: []
 --- !u!114 &591973261829103174
 MonoBehaviour:
   m_ObjectHideFlags: 0
