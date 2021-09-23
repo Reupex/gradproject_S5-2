@@ -1,4 +1,7 @@
 ## 벽돌깨기 콘텐츠
-![image](https://user-images.githubusercontent.com/66981758/134499939-21c411de-7768-4276-9cae-46593dcc1c4f.png)
+![image](https://user-images.githubusercontent.com/66981758/134500299-c62a931c-1abc-4ef5-981c-371d7beb60f9.png)
 
 ### 개요
+* 디바이스로 슬라이더를 움직이면서 공을 튀겨 벽돌을 깨는 게임
+* 사용자의 흥미를 유발하여 주도적으로 운동할 수 있도록한 콘텐츠
+* 게임 방법이 간단하여 사용자가 쉽게 플레이할 수 있을 것으로 예상됨
