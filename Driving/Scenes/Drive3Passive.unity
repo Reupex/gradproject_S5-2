@@ -2194,7 +2194,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3132,7 +3132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -5429,6 +5429,7 @@ GameObject:
   m_Component:
   - component: {fileID: 572049522}
   - component: {fileID: 572049523}
+  - component: {fileID: 572049524}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -5519,6 +5520,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &572049524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 572049521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3cfed54395f8fb4ea60536a77417d56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 0}
+  values: []
 --- !u!1 &580197786
 GameObject:
   m_ObjectHideFlags: 0
@@ -7061,7 +7076,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8759,7 +8774,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9615,37 +9630,37 @@ PrefabInstance:
     - target: {fileID: 3007998770852026138, guid: 08167a67ad6989b42999726b8a18eb18,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.06413834
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3007998770852026138, guid: 08167a67ad6989b42999726b8a18eb18,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.015879542
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3007998770852026138, guid: 08167a67ad6989b42999726b8a18eb18,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0010216373
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3007998770852026138, guid: 08167a67ad6989b42999726b8a18eb18,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9978142
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3007998770852026138, guid: 08167a67ad6989b42999726b8a18eb18,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1029.5077
+      value: 959.9867
       objectReference: {fileID: 0}
     - target: {fileID: 3007998770852026138, guid: 08167a67ad6989b42999726b8a18eb18,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -260.82245
+      value: -542.86005
       objectReference: {fileID: 0}
     - target: {fileID: 3007998770852026138, guid: 08167a67ad6989b42999726b8a18eb18,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2183.695
+      value: -2202.9304
       objectReference: {fileID: 0}
     - target: {fileID: 3007998770852026141, guid: 08167a67ad6989b42999726b8a18eb18,
         type: 3}
@@ -18703,7 +18718,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -22107,7 +22122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:

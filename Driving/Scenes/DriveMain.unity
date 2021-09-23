@@ -3194,7 +3194,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &861358100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3209,8 +3209,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UserName: Test
   Date: 210616
-  UserID: test
-  GameID: 12d
+  UserID: hyoung
+  GameID: 13d
   LongHandle: 
   ShortHadle: 
   adduction: 0
@@ -3255,6 +3255,7 @@ MonoBehaviour:
   angle: 0
   start: 0
   isEnd: 0
+  dir: 
 --- !u!1 &866526309
 GameObject:
   m_ObjectHideFlags: 0
@@ -5262,6 +5263,46 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3007998770852026138, guid: 08167a67ad6989b42999726b8a18eb18,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.087172285
+      objectReference: {fileID: 0}
+    - target: {fileID: 3007998770852026138, guid: 08167a67ad6989b42999726b8a18eb18,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.89959055
+      objectReference: {fileID: 0}
+    - target: {fileID: 3007998770852026138, guid: 08167a67ad6989b42999726b8a18eb18,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.21045254
+      objectReference: {fileID: 0}
+    - target: {fileID: 3007998770852026138, guid: 08167a67ad6989b42999726b8a18eb18,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.37262255
+      objectReference: {fileID: 0}
+    - target: {fileID: 3007998770852026138, guid: 08167a67ad6989b42999726b8a18eb18,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1991.3162
+      objectReference: {fileID: 0}
+    - target: {fileID: 3007998770852026138, guid: 08167a67ad6989b42999726b8a18eb18,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1214.5884
+      objectReference: {fileID: 0}
+    - target: {fileID: 3007998770852026138, guid: 08167a67ad6989b42999726b8a18eb18,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 540.775
+      objectReference: {fileID: 0}
+    - target: {fileID: 3007998770852026141, guid: 08167a67ad6989b42999726b8a18eb18,
+        type: 3}
+      propertyPath: m_TargetTexture
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08167a67ad6989b42999726b8a18eb18, type: 3}

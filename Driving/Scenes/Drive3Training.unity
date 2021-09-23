@@ -2116,7 +2116,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5353,7 +5353,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 572049521}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b3cfed54395f8fb4ea60536a77417d56, type: 3}
   m_Name: 
@@ -5367,7 +5367,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 572049521}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3b02829bf687c0c4f8962d83913e9353, type: 3}
   m_Name: 
@@ -6844,7 +6844,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7176,37 +7176,37 @@ PrefabInstance:
     - target: {fileID: 3007998770852026138, guid: 08167a67ad6989b42999726b8a18eb18,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.06413834
+      value: 0.091990605
       objectReference: {fileID: 0}
     - target: {fileID: 3007998770852026138, guid: 08167a67ad6989b42999726b8a18eb18,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.015879542
+      value: 0.9070244
       objectReference: {fileID: 0}
     - target: {fileID: 3007998770852026138, guid: 08167a67ad6989b42999726b8a18eb18,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0010216373
+      value: 0.2675193
       objectReference: {fileID: 0}
     - target: {fileID: 3007998770852026138, guid: 08167a67ad6989b42999726b8a18eb18,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9978142
+      value: -0.31189415
       objectReference: {fileID: 0}
     - target: {fileID: 3007998770852026138, guid: 08167a67ad6989b42999726b8a18eb18,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1029.5077
+      value: 907.7993
       objectReference: {fileID: 0}
     - target: {fileID: 3007998770852026138, guid: 08167a67ad6989b42999726b8a18eb18,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -260.82245
+      value: -939.6687
       objectReference: {fileID: 0}
     - target: {fileID: 3007998770852026138, guid: 08167a67ad6989b42999726b8a18eb18,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2183.695
+      value: 618.7841
       objectReference: {fileID: 0}
     - target: {fileID: 3007998770852026141, guid: 08167a67ad6989b42999726b8a18eb18,
         type: 3}
@@ -21348,7 +21348,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -35758,6 +35758,7 @@ MonoBehaviour:
   rotateNum: 0
   middleValue: 0
   maxScore: 0
+  TotalRotate: 0
   player: {fileID: 3060461527438584829}
   speedPointer: {fileID: 1171316793}
   savePoint: {fileID: 2082328914}
