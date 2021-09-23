@@ -23,6 +23,7 @@ public class ArrowUI: MonoBehaviour
     public string userID;
     public string gameID;
     public string sql;
+    public string handle;
     public Dictionary<string, float> Dic = new Dictionary<string, float>();
     public List<string> series1Data2;
     public GameObject circleGraph;
@@ -46,8 +47,14 @@ public class ArrowUI: MonoBehaviour
         date = DateTime.Now.ToString("yyyy년 MM월 dd일 HH시 mm분 ss초");
         date = SqlFormat(date);
 
-        userID = SqlFormat("KTT"); // 나중에 로그인 구현시 Column 클래스로 만들어서 그때 객체화하기
-        gameID = SqlFormat("21arrow");     // 각자 게임 이름에 맞게 변경
+        userID = SqlFormat(Data.Instance.UserID); // 나중에 로그인 구현시 Column 클래스로 만들어서 그때 객체화하기
+        gameID = SqlFormat(Data.Instance.GameID);     // 각자 게임 이름에 맞게 변경
+
+        // 핸들번호 저장
+        if (Data.Instance.GameID.Substring(1, 1) == "2") // 내/외회전, 수평 회전
+            handle = DBManager.SqlFormat(Data.Instance.ShortHadle);
+        else // 내/외전, 굴곡/신전
+            handle = DBManager.SqlFormat(Data.Instance.LongHandle);
 
         DBManager.DbConnectionChecek();
 
@@ -114,20 +121,16 @@ public class ArrowUI: MonoBehaviour
         ResultPanel.SetActive(true);
 
         // 게임 결과 저장 코드
-
-        // 디바이스 x
-        string sql = string.Format("Insert into Game(date, userID, gameID, hole, numOfRotation, minRotationAngle, maxRotationAngle," +
-            "gamePlayTime, gameScore) VALUES({0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8})",
-            date, userID, gameID, SqlFormat("홀번호"), SqlFormat("x"), ArrowGame.Instance.SliderMinValue, ArrowGame.Instance.SliderMaxValue, playtime_REAL, score);
-        
-        // 디바이스 o
-        //string sql1 = string.Format("Insert into Game(date, userID, gameID, hole, numOfRotation, minRotationAngle, maxRotationAngle," +
-        //    "gamePlayTime, gameScore)" + "VALUES({0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8})", 
-        //    date, userID, gameID, "'홀번호'", "'x'", Device.instance.values[0], Device.instance.values[-1], playtime_REAL, score);
-
-        //Debug.Log("date : " + date);
-        //Debug.Log("userID : " + userID);
-        //Debug.Log("gameID : " + gameID);
+        if (Data.Instance.GameID.Substring(0, 1) == "3") // 수평 회전
+        {
+            string sql = String.Format("Insert into Game VALUES( {0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8} )", date, userID, gameID, handle, ArrowGame.Instance.TotalRotate,
+                0, 359, playtime_REAL, score);
+        }
+        else // 내/외전, 굴곡/신전
+        {
+            string sql = String.Format("Insert into Game VALUES( {0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8} )", date, userID, gameID, handle, "NULL",
+           Device.instance.values[0], Device.instance.values[Device.instance.values.Count - 1], playtime_REAL, score);
+        }
         DBManager.DatabaseSQLAdd(sql);
 
         // 게임 끝나는 부분 스크립트에 아래 코드 추가

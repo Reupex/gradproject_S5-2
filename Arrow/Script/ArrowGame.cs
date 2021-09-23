@@ -78,6 +78,7 @@ public class ArrowGame : MonoBehaviour
     public Slider slider; // 20 ~ 160 정수값 slider.value
     public string type;
     public int UPcircle = 0;
+    public int TotalRotate = 0;
     public float checkpoint = 0;
     public float times;
     public float slider_value_backup;
@@ -140,7 +141,7 @@ public class ArrowGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Serial.instance.Active(); // 연동 코드 - 디바이스 능동모드로 바꿔줌
+        Serial.instance.Active(); // 연동 코드 - 디바이스 능동모드로 바꿔줌
         nextTime_Arrow += Timeplus_Arrow; // 제일 처음 화살과 겹쳐서 1초 이후에 부터 1초마다 생성시키기 위함
         // slider = GetComponent<Slider>();
         // Debug.Log("Arrow_Spawn : " + Arrow_Spawn);
@@ -209,6 +210,7 @@ public class ArrowGame : MonoBehaviour
             if (checkpoint == slider.maxValue) // 미들 값이 360이라면
             {
                 UPcircle++;          // 정방향 회전
+                TotalRotate++;
                 print(UPcircle);
             }
             checkpoint = 0; // 미들값 0으로 초기화
@@ -222,6 +224,7 @@ public class ArrowGame : MonoBehaviour
             if (checkpoint == slider.minValue) // 미들 값이 0이라면
             {
                 UPcircle--;           // 반대로 회전
+                TotalRotate++;
                 print(UPcircle);
             }
             checkpoint = 359; // 미들 값은 359로함
