@@ -3,8 +3,7 @@
 
 # 연구 제목
 **상지기능 개선을 위한 스테퍼 모터 제어 기반의 디바이스 및 콘텐츠 개발**
-
-Development of Devices and Content Based on Stepper Motor Control for Improvement of Upper limb function
+**Development of Devices and Content Based on Stepper Motor Control for Improvement of Upper limb function**
 
 ## 개발배경
 * 뇌졸중 환자의 약 75%가 후유증으로 상지 마비 장애를 동반
