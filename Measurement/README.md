@@ -1,5 +1,5 @@
 ## 측정 
-![image](https://user-images.githubusercontent.com/66981758/134498589-06fcd3e5-03bb-4c5b-9e52-116d7c219d54.png)
+![image](https://user-images.githubusercontent.com/66981758/134498931-cf0ae464-a485-47d7-a96f-a639a7288294.png)
 
 ### 개요
 * 사용자의 상지 가동 범위를 측정하기 위한 UI
