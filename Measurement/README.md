@@ -1,4 +1,7 @@
 ## 측정 
-![image](https://user-images.githubusercontent.com/66981758/134498534-5a739d3a-3e7a-4822-a716-7535e188837f.png)
+![image](https://user-images.githubusercontent.com/66981758/134498589-06fcd3e5-03bb-4c5b-9e52-116d7c219d54.png)
 
 ### 개요
+* 사용자의 상지 가동 범위를 측정하기 위한 UI
+* 내/외전, 내/외회전, 굴곡/신전 3가지 자세를 측정할 수 있음
+* 사용자가 과거에 측정한 기록이 있다면 마지막 기록을 함께 보여줌으로써 현재 상지 가동 범위와 비교할 수 있도록 함
