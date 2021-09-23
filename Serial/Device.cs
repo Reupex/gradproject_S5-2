@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -26,22 +26,32 @@ public class Device : MonoBehaviour
     void Start()
     {
         slider = GetComponent<Slider>();
-        SettingROM(); // ROM max 값 받아옴
+        if (Data.Instance.GameID.Substring(0, 1) != "3") // 훈련 콘텐츠가 아닐 때
+        {
+            SettingROM(); // ROM max 값 받아옴
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        SerialAngle(); // 디바이스 값 가져옴
+        if (Data.Instance.GameID.Substring(0, 1) != "3") // 훈련 콘텐츠가 아닐 때
+        {
+            SerialAngle(); // 디바이스 값 가져옴
+        }
+        else // 훈련 콘텐츠일 때
+        {
+            slider.value = Serial.instance.angle;
+        }
     }
 
     void SettingROM()
     {
-        switch(Data.Instance.GameID.Substring(1, 1))
+        switch (Data.Instance.GameID.Substring(1, 1))
         {
             case "1": // 내/외전
                 MaxROM = Data.Instance.adduction + Data.Instance.abduction;
-                if (MaxROM == 160) // 정상인일 때
+                if (MaxROM == 240) // 정상인일 때
                     plus = 0;
                 else
                     plus = 10;
@@ -50,7 +60,7 @@ public class Device : MonoBehaviour
                 break;
             case "2": // 내/외회전
                 MaxROM = Data.Instance.internalR + Data.Instance.externalR;
-                if (MaxROM == 240) // 정상인일 때
+                if (MaxROM == 160) // 정상인일 때
                     plus = 0;
                 else
                     plus = 10;
@@ -86,17 +96,28 @@ public class Device : MonoBehaviour
             else 
                 slider.value = Serial.instance.angle;
         }
-        values.Add(slider.value);
+        values.Add(Mathf.Abs(slider.value));
     }
     
     public void ResultCircle(GameObject CircleGraph)
     {
-        values.Sort();
-        CircleGraph.transform.GetChild(0).gameObject.GetComponent<Image>().fillAmount = 1.0f / 360.0f * (slider.minValue - plus);
-        CircleGraph.transform.GetChild(1).gameObject.GetComponent<Image>().fillAmount = 1.0f / 360.0f * (slider.maxValue - plus);
-        CircleGraph.transform.GetChild(2).gameObject.GetComponent<Image>().fillAmount = 1.0f / 360.0f * values[0]; // 가장 작은 값
-        CircleGraph.transform.GetChild(3).gameObject.GetComponent<Image>().fillAmount = 1.0f / 360.0f * values[values.Count - 1]; // 가장 큰 값
-        CircleGraph.transform.GetChild(4).gameObject.GetComponent<Image>().fillAmount = 1.0f / 360.0f * (slider.minValue - plus);
-        CircleGraph.transform.GetChild(5).gameObject.GetComponent<Image>().fillAmount = 1.0f / 360.0f * (slider.maxValue - plus);
+        if(Data.Instance.GameID.Substring(0,1) != "3")
+        {
+            values.Sort();
+            CircleGraph.transform.GetChild(0).gameObject.GetComponent<Image>().fillAmount = 1.0f / 360.0f * (slider.minValue - plus);
+            CircleGraph.transform.GetChild(1).gameObject.GetComponent<Image>().fillAmount = 1.0f / 360.0f * (slider.maxValue - plus);
+            CircleGraph.transform.GetChild(2).gameObject.GetComponent<Image>().fillAmount = 1.0f / 360.0f * Mathf.Abs(plus); // 가장 작은 값
+            CircleGraph.transform.GetChild(3).gameObject.GetComponent<Image>().fillAmount = 1.0f / 360.0f * Mathf.Abs(plus); // 가장 큰 값
+            CircleGraph.transform.GetChild(4).gameObject.GetComponent<Image>().fillAmount = 1.0f / 360.0f * (slider.minValue - plus);
+            CircleGraph.transform.GetChild(5).gameObject.GetComponent<Image>().fillAmount = 1.0f / 360.0f * (slider.maxValue - plus);
+        }
+        else
+        {
+            CircleGraph.transform.GetChild(0).gameObject.GetComponent<Image>().fillAmount = 1.0f;
+            CircleGraph.transform.GetChild(1).gameObject.GetComponent<Image>().fillAmount = 1.0f;
+            CircleGraph.transform.GetChild(4).gameObject.GetComponent<Image>().fillAmount = 1.0f;
+            CircleGraph.transform.GetChild(5).gameObject.GetComponent<Image>().fillAmount = 1.0f;
+        }
+
     }
 }
