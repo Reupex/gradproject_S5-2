@@ -19,7 +19,7 @@ Development of Devices and Content Based on Stepper Motor Control for Improvemen
 
 ## 디바이스
 ![image](https://user-images.githubusercontent.com/75357444/134477260-969a1ded-24dc-4384-ae6b-dac1687a271d.png)   
-![image](https://user-images.githubusercontent.com/75357444/134477275-2fe6ca96-e4af-4e58-b739-b7d8d238f3cf.png)
+![image](https://user-images.githubusercontent.com/75357444/134477480-04f98320-8761-488f-a962-3b2761bbbf77.png)
 
 
 ## 콘텐츠
