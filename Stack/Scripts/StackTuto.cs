@@ -28,7 +28,7 @@ public class StackTuto : MonoBehaviour
     public GameObject[] tutoPanel;
     private Vector2 stackBound = new Vector2(BOUND_SIZE, BOUND_SIZE);
 
-    private int tutoNum = 0;
+    public int tutoNum = 0;
     private int stackIndex = 0;     //stack index
     private int scoreCount = 0;     //stack 점수
     private int combo = 0;          //콤보
@@ -67,6 +67,12 @@ public class StackTuto : MonoBehaviour
 
     private void Start()
     {
+        // Serial 운동 설정
+        if (Data.Instance.GameID.Substring(0, 1) == "1") // 능동운동
+            Serial.instance.Active();
+        else if (Data.Instance.GameID.Substring(0, 1) == "4") // 저항운동
+            Serial.instance.Resistance();
+
         for (int i = 0; i < tutoPanel.Length; i++)
         {
             tutoPanel[i].SetActive(false);
@@ -281,6 +287,8 @@ public class StackTuto : MonoBehaviour
         tutoNum++;
         if (tutoNum == 2)
         {
+            Time.timeScale = 1f;
+            slider.gameObject.GetComponent<Device>().enabled = true;
             for (int i = 0; i < theStack.Length; i++)
             {
                 slider.value = 10f;
@@ -333,7 +341,7 @@ public class StackTuto : MonoBehaviour
         }
         isDead = true;
         endPanel.SetActive(true);
-        Time.timeScale = 0f;
+        Time.timeScale = 1f;
     }
 
     //씬 전환

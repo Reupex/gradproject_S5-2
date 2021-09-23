@@ -15,6 +15,7 @@ public class MainMenu : MonoBehaviour
 
 	void Start()
     {
+        Time.timeScale = 1f;
 		BackGroundMusic.value = 0.5f;
 		EffectMusic.value = 0.5f;
 	}

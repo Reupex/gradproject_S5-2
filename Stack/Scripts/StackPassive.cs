@@ -74,6 +74,7 @@ public class StackPassive : MonoBehaviour
     float standardPoint = 0f;
     string userID;
     string gameID;
+    string handle;
     
     private static StackPassive _instance;
     public static StackPassive instance
@@ -91,6 +92,12 @@ public class StackPassive : MonoBehaviour
         date = DBManager.SqlFormat(DateTime.Now.ToString("yyyy년 MM월 dd일 HH시 mm분 ss초"));
         userID = DBManager.SqlFormat(Data.Instance.UserID); 
         gameID = DBManager.SqlFormat(Data.Instance.GameID);
+
+        // 핸들번호 저장
+        if (Data.Instance.GameID.Substring(1, 1) == "2") // 내/외회전
+            handle = DBManager.SqlFormat(Data.Instance.ShortHadle);
+        else // 내/외전, 굴곡/신전
+            handle = DBManager.SqlFormat(Data.Instance.LongHandle);
 
         Serial.instance.End();
         Serial.instance.Passive();
@@ -349,7 +356,8 @@ public class StackPassive : MonoBehaviour
         resultscore.text = scoreCount.ToString();
         //Device.instance.ResultCircle(circleGraph); //그래프 설정
         Serial.instance.End();
-        Querry = string.Format("Insert into Game VALUES({0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8})", date, userID, gameID, "'홀번호'", "'x'", Math.Abs(slider.minValue), slider.maxValue, timer, scoreCount);
+
+        Querry = String.Format("Insert into Game VALUES( {0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8} )", date, userID, gameID, handle, "NULL", Device.instance.values[0], Device.instance.values[Device.instance.values.Count - 1], timer, scoreCount);
         DBManager.DatabaseSQLAdd(Querry);
     }
 

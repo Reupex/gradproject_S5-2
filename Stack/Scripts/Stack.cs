@@ -70,7 +70,7 @@ public class Stack : MonoBehaviour
     float standardPoint = 0f;
     string userID;
     string gameID;
-
+    string handle;
 
     private static Stack _instance;
     public static Stack instance
@@ -94,6 +94,12 @@ public class Stack : MonoBehaviour
         date = DBManager.SqlFormat(DateTime.Now.ToString("yyyy년 MM월 dd일 HH시 mm분 ss초"));
         userID = DBManager.SqlFormat(Data.Instance.UserID);
         gameID = DBManager.SqlFormat(Data.Instance.GameID);
+
+        // 핸들번호 저장
+        if (Data.Instance.GameID.Substring(1, 1) == "2") // 내/외회전
+            handle = DBManager.SqlFormat(Data.Instance.ShortHadle);
+        else // 내/외전, 굴곡/신전
+            handle = DBManager.SqlFormat(Data.Instance.LongHandle);
 
         slider.value = (slider.maxValue + slider.minValue) / 2;
         standardPoint = -7.0f + 14.0f / (slider.maxValue - slider.minValue) * (slider.value - slider.minValue);
@@ -325,8 +331,10 @@ public class Stack : MonoBehaviour
         resultTime.text = timer.ToString("N2");
         resultscore.text = scoreCount.ToString();
         Device.instance.ResultCircle(circleGraph); //그래프 설정
-        Serial.instance.End(); print(string.Format("Insert into Game VALUES({0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8})", date, userID, gameID, "'홀번호'", "'x'", Device.instance.values[0], Device.instance.values[Device.instance.values.Count-1], timer, scoreCount));
-        Querry = string.Format("Insert into Game VALUES({0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8})", date, userID, gameID, "'홀번호'", "'x'", Device.instance.values[0], Device.instance.values[Device.instance.values.Count - 1], timer, scoreCount);
+        Serial.instance.End(); 
+
+        Querry = String.Format("Insert into Game VALUES( {0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8} )", date, userID, gameID, handle, "NULL",
+            Device.instance.values[0], Device.instance.values[Device.instance.values.Count - 1], timer, scoreCount);
         DBManager.DatabaseSQLAdd(Querry);
     }
 
