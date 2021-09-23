@@ -12,10 +12,6 @@ public class DriveMain : MonoBehaviour
     public GameObject BgmButton, EmButton;
     public Sprite bgmon, bgmoff, emon, emoff;
 
-    //--------- DBtest -----------
-    string gameID = DBManager.SqlFormat(Data.Instance.GameID);
-    //--------------------------
-
     // Start is called before the first frame update
     void Start()
     {
@@ -35,9 +31,12 @@ public class DriveMain : MonoBehaviour
         {
             case "11":
             case "12":
+            case "41":
+            case "42":
                 SceneManager.LoadScene("Drive12");
                 break;
             case "13":
+            case "43":
                 SceneManager.LoadScene("Drive3");
                 break;
             case "23":

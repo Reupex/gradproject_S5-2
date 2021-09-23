@@ -26,13 +26,11 @@ public class Drive3Game : MonoBehaviour
     public Slider device;
     public Sprite dead;
     float speedAngle;
-    string Querry;
 
-    //--------- DBtest -----------
-    string userID = DBManager.SqlFormat("ming");
-    string gameID = DBManager.SqlFormat("310driving");
-    int dbSpeed = 15;
-    //--------------------------
+    string Querry;
+    string userID;
+    string gameID;
+    string handle;
 
     bool flag = false, isPause = false;
 
@@ -70,6 +68,9 @@ public class Drive3Game : MonoBehaviour
         }
         DBManager.DBClose();
 
+        userID = DBManager.SqlFormat(Data.Instance.UserID);
+        gameID = DBManager.SqlFormat(Data.Instance.GameID);
+        handle = DBManager.SqlFormat(Data.Instance.LongHandle);
     }
 
     // Update is called once per frame
@@ -161,7 +162,6 @@ public class Drive3Game : MonoBehaviour
     //게임 종료
     public void EndGame()
     {
-
         Time.timeScale = 0f;
         endPanel.SetActive(true);
         resultTime.text = timer.ToString("N2");
@@ -174,10 +174,9 @@ public class Drive3Game : MonoBehaviour
         print(Data.Instance.FreshTree);
 
         //db에 데이터 저장
-        Querry = string.Format("Insert into Game VALUES({0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8})", date, userID, gameID, "'홀번호'", "'x'", Device.instance.values[0], Device.instance.values[Device.instance.values.Count - 1], timer, score);
+        Querry = string.Format("Insert into Game VALUES({0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8})", date, userID, gameID, handle, "NULL",
+            Device.instance.values[0], Device.instance.values[Device.instance.values.Count - 1], timer, score);
         DBManager.DatabaseSQLAdd(Querry);
-
-        
     }
 
     //일시정지

@@ -28,11 +28,9 @@ public class Drive12Game : MonoBehaviour
     float speedAngle;
     string Querry;
 
-    //--------- test -----------
-    string userID = DBManager.SqlFormat("ming");
-    string gameID = DBManager.SqlFormat("110driving");
-    int dbSpeed = 15;
-    //--------------------------
+    string userID;
+    string gameID;
+    string handle;
 
     private static Drive12Game _instance;
     public static Drive12Game instance
@@ -53,6 +51,15 @@ public class Drive12Game : MonoBehaviour
             Serial.instance.Active();
         else if (Data.Instance.GameID.Substring(0, 1) == "4") // 저항운동
             Serial.instance.Resistance();
+
+        userID = DBManager.SqlFormat(Data.Instance.UserID);
+        gameID = DBManager.SqlFormat(Data.Instance.GameID);
+
+        // 핸들번호 저장
+        if (Data.Instance.GameID.Substring(1, 1) == "2") // 내/외회전
+            handle = DBManager.SqlFormat(Data.Instance.ShortHadle);
+        else // 내/외전
+            handle = DBManager.SqlFormat(Data.Instance.LongHandle);
 
         device.value = (device.maxValue + device.minValue) / 2;
         Time.timeScale = 1f;
@@ -136,7 +143,8 @@ public class Drive12Game : MonoBehaviour
 
         string date = DBManager.SqlFormat(DateTime.Now.ToString("yyyy년 MM월 dd일 HH시 mm분 ss초"));
 
-        Querry = string.Format("Insert into Game VALUES({0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8})", date, userID, gameID, "'홀번호'", "'x'", Device.instance.values[0], Device.instance.values[Device.instance.values.Count - 1], timer, score);
+        Querry = string.Format("Insert into Game VALUES({0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8})", date, userID, gameID, handle, "NULL",
+            Device.instance.values[0], Device.instance.values[Device.instance.values.Count - 1], timer, score);
         DBManager.DatabaseSQLAdd(Querry);
     }
 

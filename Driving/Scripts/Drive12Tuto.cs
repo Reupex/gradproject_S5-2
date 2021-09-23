@@ -41,6 +41,9 @@ public class Drive12Tuto : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Serial 운동 설정
+        Serial.instance.Active();
+
         Time.timeScale = 0f;
         Tutorial.transform.GetChild(tutoPage).gameObject.SetActive(true);
     }

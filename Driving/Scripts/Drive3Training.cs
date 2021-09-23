@@ -15,6 +15,7 @@ public class Drive3Training : MonoBehaviour
 
     public float timer, count, scoretimer, speedAngle, term = 0;
     public int score = 0, rotateNum = 0, middleValue = 0, maxScore = 0;
+    public int TotalRotate = 0;
     int userRotate = 4; //사용자 입력
     public GameObject player, speedPointer; //차랑, 속도계
     public GameObject savePoint;
@@ -29,12 +30,9 @@ public class Drive3Training : MonoBehaviour
     public Sprite dead;
 
     string Querry;
-
-    //--------- DBtest -----------
-    string userID = DBManager.SqlFormat("ming");
-    string gameID = DBManager.SqlFormat("410driving");
-    int dbSpeed = 15;
-    //--------------------------
+    string userID;
+    string gameID;
+    string handle;
 
     bool flag = false, isPause = false, isround = false;
 
@@ -65,6 +63,10 @@ public class Drive3Training : MonoBehaviour
             break;
         }
         DBManager.DBClose();
+
+        userID = DBManager.SqlFormat(Data.Instance.UserID);
+        gameID = DBManager.SqlFormat(Data.Instance.GameID);
+        handle = DBManager.SqlFormat(Data.Instance.LongHandle);
     }
 
     // Update is called once per frame
@@ -95,6 +97,7 @@ public class Drive3Training : MonoBehaviour
             if (middleValue == device.maxValue&&rotateNum!=userRotate-1)
             {
                 rotateNum++;
+                TotalRotate++;
             }
             middleValue = 0;
         }
@@ -106,6 +109,7 @@ public class Drive3Training : MonoBehaviour
             if (middleValue == device.minValue&&rotateNum!= -userRotate)
             {
                 rotateNum--;
+                TotalRotate++;
             }
             middleValue = 359;
         }
@@ -176,7 +180,7 @@ public class Drive3Training : MonoBehaviour
         print(Data.Instance.FreshTree);
 
         //db에 데이터 저장
-        Querry = string.Format("Insert into Game VALUES({0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8})", date, userID, gameID, "'홀번호'", "'x'", 0, 359, timer, score);
+        Querry = string.Format("Insert into Game VALUES({0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8})", date, userID, gameID, handle, TotalRotate, 0, 359, timer, score);
         DBManager.DatabaseSQLAdd(Querry);
     }
 

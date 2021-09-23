@@ -27,13 +27,11 @@ public class Drive3Passive : MonoBehaviour
     public Slider device;
     public Sprite dead;
     float speedAngle;
-    string Querry;
 
-    //--------- DBtest -----------
-    string userID = DBManager.SqlFormat("ming");
-    string gameID = DBManager.SqlFormat("310driving");
-    int dbSpeed = 15;
-    //--------------------------
+    string Querry;
+    string userID;
+    string gameID;
+    string handle;
 
     bool flag = false, isPause = false;
 
@@ -68,12 +66,16 @@ public class Drive3Passive : MonoBehaviour
         temp = (int)(160f / (device.maxValue - device.minValue)*limitSpeed[0]*2);
         Serial.instance.Passive();
         Serial.instance.PaMotor("0" + Serial.instance.WriteAngle(temp) + "2000");
+        print("start :" + Serial.instance.WriteAngle(temp));
         //60으로 속도 조절
         CarController.instance.m_Topspeed = limitSpeed[0]*2;
         device.value = limitSpeed[0]*2 * (device.maxValue - device.minValue) / 160f + device.minValue;
         speedAngle = 90 - (180 / (device.maxValue - device.minValue) * (device.value - device.minValue));
         speedPointer.GetComponent<RectTransform>().eulerAngles = new Vector3(0, 0, speedAngle);
 
+        userID = DBManager.SqlFormat(Data.Instance.UserID);
+        gameID = DBManager.SqlFormat(Data.Instance.GameID);
+        handle = DBManager.SqlFormat(Data.Instance.LongHandle);
     }
 
     // Update is called once per frame
@@ -143,7 +145,7 @@ public class Drive3Passive : MonoBehaviour
                 EndGame();
             }
             saveNum++;
-            print(score);
+            //print(score);
             limitText.text = limitSpeed[saveNum].ToString();
             savePoint.transform.GetChild(saveNum).gameObject.SetActive(true);
             //수동
@@ -164,7 +166,7 @@ public class Drive3Passive : MonoBehaviour
                 Serial.instance.PaMotor("0" + Serial.instance.WriteAngle(temp) + "2000");
             }
             speedAngle = 90 - (180 / (device.maxValue - device.minValue) * (device.value - device.minValue));
-            print("speedAngle" + speedAngle);
+            //print("speedAngle" + speedAngle);
             speedPointer.GetComponent<RectTransform>().eulerAngles = new Vector3(0, 0, speedAngle);
 
         }
@@ -200,7 +202,8 @@ public class Drive3Passive : MonoBehaviour
         print(Data.Instance.FreshTree);
 
         //db에 데이터 저장
-        Querry = string.Format("Insert into Game VALUES({0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8})", date, userID, gameID, "'홀번호'", "'x'", Device.instance.values[0], Device.instance.values[Device.instance.values.Count - 1], timer, score);
+        Querry = string.Format("Insert into Game VALUES({0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8})", date, userID, gameID, handle, "NULL",
+            Device.instance.values[0], Device.instance.values[Device.instance.values.Count - 1], timer, score);
         DBManager.DatabaseSQLAdd(Querry);
 
         
